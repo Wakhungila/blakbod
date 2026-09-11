@@ -127,12 +127,5 @@ supabase/
   schema.sql          Run this in the Supabase SQL editor
 ```
 
-## Notes on the "follow" feature
 
-There's no way for a third-party web app to programmatically follow someone on Instagram, X, or
-TikTok — those platforms don't expose that as a public API action, even with official developer
-access. So BLAKBOD is intentionally honest about this: clicking a handle opens the real profile
-in a new tab, the player follows manually, and BLAKBOD just remembers that they did it (self-reported,
-one click, no extra step). That's enough to give you visibility into team-wide adoption without
-promising something that isn't technically possible.
 
