@@ -19,6 +19,7 @@ export type Profile = {
   id: string;
   first_name: string | null;
   last_name: string | null;
+  display_name: string | null;
   position_primary: string | null;
   position_secondary: string | null;
   instagram: string | null;
@@ -29,7 +30,8 @@ export type Profile = {
   created_at: string;
 };
 
-export function fullName(p: Pick<Profile, "first_name" | "last_name">): string {
+export function fullName(p: Pick<Profile, "first_name" | "last_name" | "display_name">): string {
+  if (p.display_name?.trim()) return p.display_name.trim();
   return [p.first_name, p.last_name].filter(Boolean).join(" ").trim();
 }
 

@@ -20,6 +20,7 @@ export default function OnboardingPage() {
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [positionPrimary, setPositionPrimary] = useState("");
   const [positionSecondary, setPositionSecondary] = useState("");
   const [instagram, setInstagram] = useState("");
@@ -44,6 +45,7 @@ export default function OnboardingPage() {
       if (profile) {
         setFirstName(profile.first_name ?? "");
         setLastName(profile.last_name ?? "");
+        setDisplayName(profile.display_name ?? "");
         setPositionPrimary(profile.position_primary ?? "");
         setPositionSecondary(profile.position_secondary ?? "");
         setInstagram(profile.instagram ?? "");
@@ -79,6 +81,7 @@ export default function OnboardingPage() {
         id: user.id,
         first_name: firstName.trim(),
         last_name: lastName.trim(),
+        display_name: displayName.trim() || null,
         position_primary: positionPrimary,
         position_secondary: positionSecondary || null,
         instagram: instagram.trim() || null,
@@ -148,6 +151,18 @@ export default function OnboardingPage() {
               className="w-full rounded-xl border border-line bg-surface px-4 py-3 text-bone placeholder:text-muted focus:border-maroon-light"
             />
           </div>
+        </div>
+
+        <div>
+          <label className="mb-1.5 block text-sm text-muted">Display name <span className="text-muted/70">(optional)</span></label>
+          <input
+            type="text"
+            value={displayName}
+            onChange={(e) => setDisplayName(e.target.value)}
+            placeholder="Your nickname"
+            maxLength={40}
+            className="w-full rounded-xl border border-line bg-surface px-4 py-3 text-bone placeholder:text-muted focus:border-maroon-light"
+          />
         </div>
 
         <PositionSelect
