@@ -51,13 +51,6 @@ export default async function TeamPage() {
     followMap.get(f.followed_id)!.add(f.platform);
   }
 
-  // Team-wide completion stat
-  const totalPossible = players.reduce(
-    (sum, p) => sum + (p.instagram ? 1 : 0) + (p.twitter_x ? 1 : 0) + (p.tiktok ? 1 : 0),
-    0
-  );
-  const myCompleted = Array.from(followMap.values()).reduce((sum, platforms) => sum + platforms.size, 0);
-  const pct = totalPossible > 0 ? Math.round((myCompleted / totalPossible) * 100) : 100;
   const missingSocials = (["instagram", "twitter_x", "tiktok"] as Platform[]).filter(
     (platform) => !me[platform]
   );
@@ -72,29 +65,12 @@ export default async function TeamPage() {
       />
       <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
         <div className="mb-7 sm:mb-8">
-          <h1 className="font-display text-xl font-extrabold tracking-tight text-bone sm:text-2xl">
+          <h1 className="font-display text-2xl font-extrabold tracking-tight text-bone sm:text-3xl lg:text-4xl">
             Hello, {preferredName(me)}, let&apos;s connect!
           </h1>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+          <p className="mt-3 max-w-2xl text-base leading-7 text-muted sm:text-lg">
             Tap a Yudhee handle to open their profile and follow them!
           </p>
-
-          {totalPossible > 0 && (
-            <div className="mt-5 max-w-2xl rounded-2xl border border-line bg-surface p-3.5 sm:p-4">
-              <div className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
-                <span className="text-sm font-medium text-bone">Your follow completion</span>
-                <span className="font-display text-sm font-bold text-maroon-light">
-                  {myCompleted}/{totalPossible} · {pct}%
-                </span>
-              </div>
-              <div className="h-2 overflow-hidden rounded-full bg-surface-raised">
-                <div
-                  className="h-full rounded-full bg-maroon-light transition-all"
-                  style={{ width: `${pct}%` }}
-                />
-              </div>
-            </div>
-          )}
         </div>
 
         {players.length === 0 ? (
