@@ -50,8 +50,13 @@ export function PlayerCard({
             {positionLabel(player)}
           </p>
         )}
-        <div className="absolute inset-x-4 bottom-6 text-center">
+        <div className="absolute inset-x-4 bottom-5 text-center">
           <h3 className="truncate font-display text-xl font-black tracking-tight text-bone sm:text-2xl">{name}</h3>
+          {player.display_name?.trim() && (
+            <p className="mt-1 truncate text-sm font-medium text-bone/75 sm:text-base">
+              Nickname: {player.display_name.trim()}
+            </p>
+          )}
         </div>
       </div>
 

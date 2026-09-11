@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { NavBar } from "@/components/NavBar";
 import { TeamDirectory } from "@/components/TeamDirectory";
-import type { Follow, Platform, Profile } from "@/lib/types";
+import { preferredName, type Follow, type Platform, type Profile } from "@/lib/types";
 
 export default async function TeamPage() {
   const supabase = await createClient();
@@ -64,7 +64,7 @@ export default async function TeamPage() {
       <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
         <div className="mb-7 sm:mb-8">
           <h1 className="font-display text-xl font-extrabold tracking-tight text-bone sm:text-2xl">
-            Hello, {me.display_name?.trim() || me.first_name}, let&apos;s connect!
+            Hello, {preferredName(me)}, let&apos;s connect!
           </h1>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
             {players.length} yudhee on BLAKBOD. Tap a handle to open their profile and mark them followed.

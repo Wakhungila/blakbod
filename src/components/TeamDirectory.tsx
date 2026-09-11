@@ -24,11 +24,12 @@ export function TeamDirectory({
     const normalizedQuery = query.trim().toLowerCase();
     return players.filter((player) => {
       const name = `${player.first_name ?? ""} ${player.last_name ?? ""}`.toLowerCase();
+      const displayName = player.display_name?.toLowerCase() ?? "";
       const handles = [player.instagram, player.twitter_x, player.tiktok]
         .filter(Boolean)
         .join(" ")
         .toLowerCase();
-      const matchesQuery = !normalizedQuery || name.includes(normalizedQuery) || handles.includes(normalizedQuery);
+      const matchesQuery = !normalizedQuery || name.includes(normalizedQuery) || displayName.includes(normalizedQuery) || handles.includes(normalizedQuery);
       const matchesPosition = position === "all" || positionLabel(player).split(" / ").includes(position);
       return matchesQuery && matchesPosition;
     });

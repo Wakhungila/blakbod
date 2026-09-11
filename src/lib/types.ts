@@ -31,8 +31,11 @@ export type Profile = {
 };
 
 export function fullName(p: Pick<Profile, "first_name" | "last_name" | "display_name">): string {
-  if (p.display_name?.trim()) return p.display_name.trim();
   return [p.first_name, p.last_name].filter(Boolean).join(" ").trim();
+}
+
+export function preferredName(p: Pick<Profile, "first_name" | "display_name">): string {
+  return p.display_name?.trim() || p.first_name?.trim() || "there";
 }
 
 export function positionLabel(p: Pick<Profile, "position_primary" | "position_secondary">): string {
