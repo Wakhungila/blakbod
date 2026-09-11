@@ -29,7 +29,7 @@ export function PlayerCard({
     .toUpperCase();
 
   return (
-    <article className="group w-full max-w-[280px] overflow-hidden rounded-[22px] border border-maroon/35 bg-surface text-bone shadow-[0_18px_45px_rgba(0,0,0,0.2)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-maroon-light/50 hover:shadow-[0_24px_55px_rgba(0,0,0,0.32)]">
+    <article className="group w-full overflow-hidden rounded-[22px] border border-maroon/35 bg-surface text-bone shadow-[0_18px_45px_rgba(0,0,0,0.2)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-maroon-light/50 hover:shadow-[0_24px_55px_rgba(0,0,0,0.32)]">
       <div className="relative aspect-[4/5] overflow-hidden rounded-[16px] bg-maroon-dim">
         {player.avatar_url ? (
           // eslint-disable-next-line @next/next/no-img-element

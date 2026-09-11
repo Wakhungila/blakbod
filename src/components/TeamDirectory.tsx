@@ -73,7 +73,17 @@ export function TeamDirectory({
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,240px),280px))] justify-start gap-5">
+        <div
+          className={`grid grid-cols-1 gap-5 ${
+            filteredPlayers.length === 1
+              ? "max-w-[280px]"
+              : filteredPlayers.length === 2
+                ? "sm:max-w-[580px] sm:grid-cols-2"
+                : filteredPlayers.length === 3
+                  ? "sm:max-w-[880px] sm:grid-cols-2 lg:grid-cols-3"
+                  : "sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+          }`}
+        >
           {filteredPlayers.map((player) => (
             <PlayerCard
               key={player.id}
